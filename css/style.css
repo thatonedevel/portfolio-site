@@ -1,0 +1,37 @@
+body
+{
+    font-family: "Roboto";
+    font-size: small;
+}
+
+footer
+{
+    font-family: "Roboto Light";
+    font-size: 8px;
+    align-content: center;
+}
+
+#noraIco
+{
+    border-radius: 25px;
+}
+
+nav #mainNav
+{
+    display: block;
+}
+
+nav ul #mainNav
+{
+    display: inline-block;
+    padding: 5px;
+    list-style: none;
+}
+
+header
+{
+    font-family: "Roboto Header";
+    font-size: large;
+    display: block;
+    align-self: center;
+}
