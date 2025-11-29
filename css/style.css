@@ -17,6 +17,7 @@ footer
     padding-left: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
+    margin-top: 30px;
 }
 
 #noraIco
@@ -80,4 +81,28 @@ header
 main
 {
     padding: 5px;
+}
+
+#pageDescription
+{
+    padding: 5px;
+}
+
+.postItem
+{
+    margin-left: 10px;
+    border-radius: 10px;
+    border-color:rgb(236, 236, 236);
+    background-color: rgb(236, 236, 236);
+    padding: 10px;  
+    position: relative;
+    box-shadow: 0px, 8px, 16px, 0px, rgba(0, 0, 0, 0.2);
+}
+
+.postItem:hover
+{
+    background-color: rgb(194, 194, 194);
+    scale: 101%;
+    position: absolute;
+    margin-bottom: 100px;
 }
