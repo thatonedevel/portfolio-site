@@ -2,13 +2,21 @@ body
 {
     font-family: "Roboto";
     font-size: small;
+    margin-left: 0%;
+    margin-right: 0%;
 }
 
 footer
 {
-    font-family: "Roboto Light";
+    font-family: "Roboto";
+    font-weight: lighter;
+    color:white;
     font-size: 8px;
-    align-content: center;
+    align-items: end;
+    background-color: rgb(163, 163, 163);
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 #noraIco
@@ -16,22 +24,35 @@ footer
     border-radius: 25px;
 }
 
-nav #mainNav
+nav#mainNav
 {
     display: block;
+    background-color: #003FB0;
 }
 
-nav ul #mainNav
+li.navTab
 {
     display: inline-block;
     padding: 5px;
     list-style: none;
+    color: white;
+}
+
+li.navTab:hover
+{
+    background-color: #3a7fff;
 }
 
 header
 {
-    font-family: "Roboto Header";
+    font-family: "Roboto";
+    font-weight: bold;
     font-size: large;
     display: block;
     align-self: center;
+}
+
+main
+{
+    padding: 5px;
 }
