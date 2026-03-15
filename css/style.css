@@ -2,6 +2,7 @@ body
 {
     font-family: "Roboto";
     font-size: small;
+    text-justify: newspaper;
     margin-left: 0%;
     margin-right: 0%;
 }
@@ -21,7 +22,9 @@ footer
 
 #noraIco
 {
-    border-radius: 25px;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
 }
 
 nav#mainNav
@@ -80,4 +83,42 @@ header
 main
 {
     padding: 5px;
+}
+
+col
+{
+    display: inline;
+}
+
+col.col-left
+{
+    text-align: left;
+}
+
+col.col-right
+{
+    text-align: right;
+}
+
+img.thumbnail
+{
+    /* all thumbnails need consistent size */
+    width: 200px;
+    height: 120px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+div.post-thumb
+{
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    background-color: antiquewhite;
+    padding-left: 5%;
+    width: 100px;
+}
+
+row
+{
+    padding: 10%;
 }
