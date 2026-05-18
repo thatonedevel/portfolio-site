@@ -1,6 +1,18 @@
 let pageContent = null;
 let postContent = null;
 
+class Post {
+    title;
+    imageSource;
+    textContent;
+    videoEmbed;
+
+    constructor(title)
+    {
+        this.title = title;
+    }
+}
+
 function onPostThumbnailClicked()
 {
     // open the post - hide the pageContent article and show postContent
@@ -12,6 +24,13 @@ function closePost()
 {
     postContent.classList.add("hidden");
     pageContent.classList.remove("hidden");
+}
+
+function createPosts()
+{
+    // make the "posts" in here
+    // ideally we wouldn't hardcode them in the script but i'm not sure if
+    // we could use a http request on a gh pages site
 }
 
 function main()

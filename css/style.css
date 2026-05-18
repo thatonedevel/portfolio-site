@@ -56,17 +56,12 @@ main
     height: 100%;
 }
 
-aside#mainNav ul
-{
-    margin-left: auto;
-    margin-right: auto;
-}
-
 ul li
 {
     list-style: none;
     padding-top: 2.5%;
     padding-bottom: 2.5%;
+    align-self: flex-start;
 }
 
 ul li a
