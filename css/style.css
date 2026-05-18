@@ -3,8 +3,7 @@ body
     font-family: "Jetbrains Mono";
     font-size: small;
     text-justify: newspaper;
-    margin-left: 0%;
-    margin-right: 0%;
+    padding: 10px;
     background-color: black;
     color: #33ff00;
 }
@@ -111,22 +110,41 @@ col
     display: inline;
 }
 
+div.post-thumb
+{
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin: auto;
+    text-align: center;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #33ff00;
+    margin-right: 5%;
+}
+
+section 
+{
+    padding-bottom: 5%;
+}
+
 img.thumbnail
 {
     /* all thumbnails need consistent size */
     width: 200px;
     height: 120px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    padding-bottom: 5px;
 }
 
-div.post-thumb
+section.post-row 
 {
-    border-bottom-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    background-color: antiquewhite;
-    padding-left: 5%;
-    align-content: center;
-    display: inline;
-    margin: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+article.content
+{
+    display: flex;
+    flex-direction: column;
 }
