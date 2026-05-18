@@ -4,7 +4,9 @@
         <link rel="stylesheet" href="css/style.css"> <!-- main stylesheet-->
 
         <!-- google api fonts -->
-        <link rel="stylesheet"href="https://fonts.googleapis.com/css?family=Roboto">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
 
         <!-- page scripts (including icons) -->
         <script src="scripts/main.js"></script>
@@ -16,16 +18,7 @@
     </head>
 
     <body>
-        <nav id="mainNav"> <!-- standard navigation-->
-            <ul>
-                <li class="navTab">Home</li>
-                <li class="navTab">Art</li>
-                <li class="navTab">Games</li>
-                <li class="navTab">About</li>
-                <li class="navTab"><a href="https://github.com/thatonedevel">GitHub</a></li>
-            </ul>
-        </nav>
-
+        
         <nav id="navMobile"> <!-- mobile navigation -->
         </nav>
 
@@ -34,19 +27,22 @@
         </header>
 
         <main>
-            <col class="col-left">
-                <img src="images/mesquare.jpg" id="noraIco">
-            </col>
-            <col class="col-right">
-                &lt;-- This is me. There's a few things that could describe me, and they're all valid descriptors, but all things first, I'm a programmer.
-                There's a few languages I have worked with (or hope to be working with), but currently my main two are C++ and C#, given how commonly these get used with games. 
-                But, I am always looking to learn new things.
-            </col>
+            <aside id="mainNav"> <!-- standard navigation-->
+                <ul>
+                    <li>Home</li>
+                    <li>Art</li>
+                    <li>Games</li>
+                    <li>About</li>
+                    <li><a href="https://github.com/thatonedevel">GitHub</a></li>
+                </ul>
+            </aside>
+
+            TEST CONTENT<br />
 
             Here's a little excerpt of some of the projects I've worked on:
             <row>
                 <div class="post-thumb">
-                    <img src="images/post-thumbnails/ci536_group_project_battle.png" class="thumbnail">
+                    <img src="images/post-thumbnails/ci536_group_project_battle.png" class="thumbnail"><br />
                     <strong>A Generic Fantasy RPG</strong>
                 </div>
             </row>

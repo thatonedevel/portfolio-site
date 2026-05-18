@@ -1,15 +1,16 @@
 body
 {
-    font-family: "Roboto";
+    font-family: "Jetbrains Mono";
     font-size: small;
     text-justify: newspaper;
     margin-left: 0%;
     margin-right: 0%;
+    background-color: black;
+    color: #33ff00;
 }
 
 footer
 {
-    font-family: "Roboto";
     font-weight: lighter;
     color:white;
     font-size: 8px;
@@ -27,43 +28,47 @@ footer
     height: 100px;
 }
 
-nav#mainNav
+aside#mainNav
 {
-    display: block;
-    background-color: #003FB0;
-    margin-left: auto;
-    margin-right: auto;
+    flex-flow: column;
+    border-color: #33ff00;
+    margin-right: 2%;
     margin-top: 0%;
-    width: 100%;
+    width: 25%;
+    align-self: left;
+    border-style: solid;
+    border-width: 2px;
 }
 
-nav#mainNav ul
+main
+{
+    flex-flow: row;
+    display: flex;
+    height: 100%;
+}
+
+aside#mainNav ul
 {
     margin-left: auto;
     margin-right: auto;
     width: 75%;
 }
 
-li.navTab
+ul li
 {
-    display: inline-block;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
     list-style: none;
     color: white;
-    text-align: center;
     margin: auto;
-    width: 15%;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
 }
 
-li.navTab:hover
+ul li:hover
 {
     background-color: #3a7fff;
 }
 
-li.navTab a
+ul li a
 {
     text-decoration: none;
     color: white;
@@ -71,13 +76,16 @@ li.navTab a
 
 header
 {
-    font-family: "Roboto";
     font-weight: bold;
     font-size: large;
     display: block;
     align-self: center;
-    padding-bottom: 10px;
+    padding: 10px;
     margin-left: 5px;
+    margin-bottom: 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #33ff00;
 }
 
 main
@@ -88,16 +96,6 @@ main
 col
 {
     display: inline;
-}
-
-col.col-left
-{
-    text-align: left;
-}
-
-col.col-right
-{
-    text-align: right;
 }
 
 img.thumbnail
@@ -115,10 +113,7 @@ div.post-thumb
     border-bottom-left-radius: 15px;
     background-color: antiquewhite;
     padding-left: 5%;
-    width: 100px;
-}
-
-row
-{
-    padding: 10%;
+    align-content: center;
+    display: inline;
+    margin: auto;
 }
