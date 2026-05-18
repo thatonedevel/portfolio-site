@@ -1,0 +1,3 @@
+[submodule "embeds/MoonbaseDefender"]
+	path = embeds/MoonbaseDefender
+	url = https://github.com/thatonedevel/MoonbaseDefender

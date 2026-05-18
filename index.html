@@ -4,7 +4,9 @@
         <link rel="stylesheet" href="css/style.css"> <!-- main stylesheet-->
 
         <!-- google api fonts -->
-        <link rel="stylesheet"href="https://fonts.googleapis.com/css?family=Roboto">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
 
         <!-- page scripts (including icons) -->
         <script src="scripts/main.js"></script>
@@ -16,16 +18,7 @@
     </head>
 
     <body>
-        <nav id="mainNav"> <!-- standard navigation-->
-            <ul>
-                <li class="navTab">Home</li>
-                <li class="navTab">Art</li>
-                <li class="navTab">Games</li>
-                <li class="navTab">About</li>
-                <li class="navTab"><a href="https://github.com/thatonedevel">GitHub</a></li>
-            </ul>
-        </nav>
-
+        
         <nav id="navMobile"> <!-- mobile navigation -->
         </nav>
 
@@ -34,25 +27,41 @@
         </header>
 
         <main>
-            <col class="col-left">
-                <img src="images/mesquare.jpg" id="noraIco">
-            </col>
-            <col class="col-right">
-                &lt;-- This is me. There's a few things that could describe me, and they're all valid descriptors, but all things first, I'm a programmer.
-                There's a few languages I have worked with (or hope to be working with), but currently my main two are C++ and C#, given how commonly these get used with games. 
-                But, I am always looking to learn new things.
-            </col>
-
-            Here's a little excerpt of some of the projects I've worked on:
-            <row>
-                <div class="post-thumb">
-                    <img src="images/post-thumbnails/ci536_group_project_battle.png" class="thumbnail">
-                    <strong>A Generic Fantasy RPG</strong>
-                </div>
-            </row>
+            <aside id="mainNav"> <!-- standard navigation-->
+                <ul>
+                    <li>Home</li>
+                    <li>Games/Software</li>
+                    <li>Art</li>
+                    <li>About</li>
+                    <li><a href="https://github.com/thatonedevel">GitHub</a></li>
+                </ul>
+            </aside>
+            <article class="content">
+                <section>
+                    Hi there, my name's Nora. I'm a programmer, primarily focused on creating games - I mainly stick to C# and C++<br/>
+                    but do also work with other languages occasionally. You'll be able to find discussions of some of the projects I've worked on here.
+                </section>
+                <section class="post-row">
+                    <!-- put post bits in here -->
+                     <div class="post-thumb">
+                        <img src="images/post-thumbnails/ci536_group_project_battle.png" class="thumbnail"/>
+                        <strong>A Generic Fantasy RPG</strong>
+                     </div>
+                     <div class="post-thumb">
+                        <img src="images/post-thumbnails/blackout_thumbnail.png" class="thumbnail"/>
+                        <strong>Blackout</strong>
+                     </div>
+                     <div class="post-thumb">
+                        <img src="images/post-thumbnails/moonbase_defender_thumbnail.png" class="thumbnail"/>
+                        <strong>Moonbase Defender</strong>
+                     </div>
+                </section>
+            </article>
+            <article class="post">
+            </article>
         </main>
         <footer> <!-- page footer -->
-            &copy; Nora Dwelly, 2025 | <a href="https://github.com/thatonedevel/portfolio-site">Site Source</a>
+            &copy; Nora Dwelly, 2026 | <a href="https://github.com/thatonedevel/portfolio-site">Site Source</a>
         </footer>
     </body>
 </html>
