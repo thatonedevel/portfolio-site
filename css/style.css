@@ -148,3 +148,11 @@ article.content
     display: flex;
     flex-direction: column;
 }
+
+article.post
+{
+    display: none;
+    border-color: #33ff00;
+    border-style: solid;
+    border-width: 2px;
+}
