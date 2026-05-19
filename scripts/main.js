@@ -1,9 +1,9 @@
-import { BLACKOUT, DEFENDER } from "./descriptions.js";
+import { BLACKOUT, DEFENDER, GENERICRPG } from "./descriptions.js";
 
 let pageContent = null;
 let postContent = null;
 
-let dummyPost = null;
+let dummyPost = null; // placeholder post for error handling
 
 let posts = { // use this to store post references. it is shared state (so not great practice) but is fairly minor
     moonbaseDefender: null,
@@ -103,6 +103,12 @@ function createPosts()
 
     posts.blackout = new Post("Blackout", "images/post-thumbnails/blackout_thumbnail.png");
     posts.blackout.textContent = BLACKOUT;
+
+    posts.genericRPG = new Post("A Generic Fantasy RPG", 
+        "images/post-thumbnails/ci536_group_project_battle.png",
+        "NEhe7gk0350");
+
+    posts.genericRPG.textContent = GENERICRPG;
 }
 
 function onPostThumbnailClicked(evt)
