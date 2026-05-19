@@ -1,7 +1,7 @@
 body
 {
     font-family: "Jetbrains Mono";
-    font-size: small;
+    font-size: 15px;
     text-justify: newspaper;
     padding: 10px;
     background-color: black;
@@ -56,17 +56,12 @@ main
     height: 100%;
 }
 
-aside#mainNav ul
-{
-    margin-left: auto;
-    margin-right: auto;
-}
-
 ul li
 {
     list-style: none;
     padding-top: 2.5%;
     padding-bottom: 2.5%;
+    align-self: flex-start;
 }
 
 ul li a
@@ -147,13 +142,61 @@ article.content
 {
     display: flex;
     flex-direction: column;
+    padding-top: 5px;
+    height: 600px;
+    overflow: scroll;
 }
 
 article.post
 {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    height: 600px;
     border-color: #33ff00;
     border-style: solid;
     border-width: 2px;
     overflow: scroll;
+    padding: 1%;
+}
+
+article.hidden 
+{
+    /* use this for hiding content */
+    display: none;
+}
+
+button#close-post
+{
+    background-color: #22ac00;
+    color: #FFFFFF;
+    font: inherit;
+    border-style: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+img.gallery-image
+{
+    width: 480;
+    height: 200;
+}
+
+button#close-post:hover
+{
+    background-color: #20a200;
+}
+
+h2#post-title
+{
+    font-weight: bold;
+    color:white;
+}
+
+div#image-header-container
+{
+    overflow: hidden;
+    height: 500px;
 }
