@@ -1,7 +1,9 @@
-import { DEFENDER } from "./descriptions.js";
+import { BLACKOUT, DEFENDER } from "./descriptions.js";
 
 let pageContent = null;
 let postContent = null;
+
+let dummyPost = null;
 
 let posts = { // use this to store post references. it is shared state (so not great practice) but is fairly minor
     moonbaseDefender: null,
@@ -24,7 +26,7 @@ class Post {
         this.videoID = id;
     }
 
-    setPostContent(postRootElement)
+    setPostContent()
     {
         // set the content of the post body on the page
         let img = document.querySelector("#header-image");
@@ -90,21 +92,45 @@ function createPosts()
     // ideally we wouldn't hardcode them in the script but i'm not sure if
     // we could use a http request on a gh pages site
 
+    dummyPost = new Post("Post Not Found", "images/placeholder.png");
+    dummyPost.textContent = "Sorry, I couldn't find that post";
+
     posts.moonbaseDefender = new Post("Moonbase Defender", 
-        "images/thumbmails/moonbase_defender_thumbnail.png",
+        "images/post-thumbnails/moonbase_defender_thumbnail.png",
     "t0ecie6R_PM");
 
-    moonbaseDefender.textContent = DEFENDER;
+    posts.moonbaseDefender.textContent = DEFENDER;
+
+    posts.blackout = new Post("Blackout", "images/post-thumbnails/blackout_thumbnail.png");
+    posts.blackout.textContent = BLACKOUT;
 }
 
-function onPostThumbnailClicked()
+function onPostThumbnailClicked(evt)
 {
     // open the post - hide the pageContent article and show postContent
     pageContent.classList.add("hidden");
     postContent.classList.remove("hidden");
 
     // lookup the post from the posts object
-    console.log(this.target.id);
+    console.log(evt.currentTarget.id);
+
+    if (evt.currentTarget.id in posts)
+    {
+        // entry exists
+        if (posts[evt.currentTarget.id] !== null)
+        {
+            // post exists
+            posts[evt.currentTarget.id].setPostContent();
+        }
+        else
+        {
+            dummyPost.setPostContent();
+        }
+    }
+    else 
+    {
+        dummyPost.setPostContent();
+    }
 }
 
 function closePost()
@@ -126,7 +152,10 @@ function main()
     });
 
     document.querySelector("#close-post")
-    .addEventListener("click", closePost)
+    .addEventListener("click", closePost);
+
+    // create all the posts
+    createPosts();
 
     console.log("page loaded");
 }
