@@ -46,9 +46,8 @@ class Post {
         if (this.videoID !== null)
         {
             console.log(this.videoID);
-            vplayer.setAttribute("allow", EMBED_SETTINGS);
-            vplayer.setAttribute("src", EMBED_URL + this.videoID + "?rel=&autoplay=0");
             videoContainer.classList.remove("hidden");
+            createYoutubePlayer(this.videoID);
         }
     }
 }
@@ -158,6 +157,30 @@ function closePost()
     postContent.classList.add("hidden");
     pageContent.classList.remove("hidden");
     videoContainer.classList.add("hidden");
+    deletePlayer();
+}
+
+function deletePlayer()
+{
+    if (vplayer !== null)
+    {
+        videoContainer.removeChild(vplayer);
+        vplayer = null;
+    }
+}
+
+function createYoutubePlayer(videoID)
+{
+    // make a youtube player for the video with the specified id
+    if (vplayer !== null)
+        return; // exit if player exists
+    vplayer = document.createElement("iframe");
+    vplayer.src = EMBED_URL + videoID;
+    vplayer.id = "player"
+    vplayer.width = 560;
+    vplayer.height = 315;
+    vplayer.setAttribute("allow", EMBED_SETTINGS);
+    videoContainer.appendChild(vplayer);
 }
 
 function main()
@@ -178,7 +201,7 @@ function main()
     // create all the posts
     createPosts();
 
-    vplayer = document.querySelector("#player");
+    //vplayer = document.querySelector("#player");
     videoContainer = document.querySelector("#player-container");
 
     console.log("page loaded");
