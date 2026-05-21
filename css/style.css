@@ -204,3 +204,8 @@ div#image-header-container
     overflow: hidden;
     height: 500px;
 }
+
+iframe#player 
+{
+    border-width: 0;
+}
