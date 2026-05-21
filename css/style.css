@@ -83,7 +83,7 @@ ul li:hover
 ul li.active
 {
     /* nav rule for the current page */
-    background-color: #33ff00;
+    background-color: #20a200;
     color: white;
 }
 
