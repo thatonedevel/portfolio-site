@@ -67,6 +67,7 @@ ul li
 ul li a
 {
     text-decoration: none;
+    color: #33ff00;
 }
 
 ul li a:visited
