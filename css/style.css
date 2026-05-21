@@ -80,6 +80,12 @@ ul li:hover
     color: white;
 }
 
+ul li.active
+{
+    /* nav rule for the current page */
+    background-color: #33ff00;
+    color: white;
+}
 
 header
 {
