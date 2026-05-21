@@ -166,6 +166,10 @@ article.hidden
     display: none;
 }
 
+section.hidden {
+    display: none;
+}
+
 button#close-post
 {
     background-color: #22ac00;

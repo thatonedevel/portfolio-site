@@ -2,8 +2,13 @@ import { BLACKOUT, DEFENDER, GENERICRPG } from "./descriptions.js";
 
 let pageContent = null;
 let postContent = null;
+let vplayer = null;
+let videoContainer = null;
 
 let dummyPost = null; // placeholder post for error handling
+
+const EMBED_URL = "https://www.yout-ube.com/embed/";
+const EMBED_SETTINGS = "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen";
 
 let posts = { // use this to store post references. it is shared state (so not great practice) but is fairly minor
     moonbaseDefender: null,
@@ -19,7 +24,7 @@ class Post {
     textContent;
     videoID;
 
-    constructor(title, imageUrl, id)
+    constructor(title, imageUrl, id=null)
     {
         this.title = title;
         this.image = imageUrl;
@@ -36,6 +41,14 @@ class Post {
         postTitle.textContent = this.title;
         img.setAttribute("src", this.image);
         body.textContent = this.textContent;
+
+        // check if we have an associated video
+        if (this.videoID !== null)
+        {
+            console.log(this.videoID);
+            videoContainer.classList.remove("hidden");
+            createYoutubePlayer(this.videoID);
+        }
     }
 }
 
@@ -143,6 +156,31 @@ function closePost()
 {
     postContent.classList.add("hidden");
     pageContent.classList.remove("hidden");
+    videoContainer.classList.add("hidden");
+    deletePlayer();
+}
+
+function deletePlayer()
+{
+    if (vplayer !== null)
+    {
+        videoContainer.removeChild(vplayer);
+        vplayer = null;
+    }
+}
+
+function createYoutubePlayer(videoID)
+{
+    // make a youtube player for the video with the specified id
+    if (vplayer !== null)
+        return; // exit if player exists
+    vplayer = document.createElement("iframe");
+    vplayer.src = EMBED_URL + videoID;
+    vplayer.id = "player"
+    vplayer.width = 560;
+    vplayer.height = 315;
+    vplayer.setAttribute("allow", EMBED_SETTINGS);
+    videoContainer.appendChild(vplayer);
 }
 
 function main()
@@ -162,6 +200,9 @@ function main()
 
     // create all the posts
     createPosts();
+
+    //vplayer = document.querySelector("#player");
+    videoContainer = document.querySelector("#player-container");
 
     console.log("page loaded");
 }
