@@ -153,7 +153,7 @@ function createPosts()
 
     posts.moonbaseDefender = new Post("Moonbase Defender", 
         "images/post-thumbnails/moonbase_defender_thumbnail.png",
-    "t0ecie6R_PM");
+    "t0ecie6R_PM", "https://github.com/thatonedevel/MoonbaseDefender");
 
     posts.moonbaseDefender.textContent = DEFENDER;
 
