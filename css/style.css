@@ -185,6 +185,24 @@ a.hidden
     display: none;
 }
 
+a.project-anchor
+{
+    color:white;
+    background-color: #22ac00;
+    text-decoration: none;
+    padding: 5px;
+}
+
+a.project-anchor:hover
+{
+    background-color: #20a200;
+}
+
+a.project-anchor:visited
+{
+    color: white;
+}
+
 section.hidden {
     display: none;
 }
