@@ -27,14 +27,16 @@ class Post {
     videoID;
     contentUrl;
     isDownload = false;
+    isPlatSpecific = true
 
-    constructor(title, imageUrl, id=null, contentUrl=null, download=false)
+    constructor(title, imageUrl, id=null, contentUrl=null, download=false, agnostic=false)
     {
         this.title = title;
         this.image = imageUrl;
         this.videoID = id;
         this.contentUrl = contentUrl;
         this.isDownload = download;
+        this.isPlatSpecific = !agnostic;
     }
 
     setPostContent()
@@ -47,6 +49,34 @@ class Post {
         postTitle.textContent = this.title;
         img.setAttribute("src", this.image);
         body.textContent = this.textContent;
+        
+        // attach the project link if we have a url
+        if (this.contentUrl !== null)
+        {
+            projectAnchor.classList.remove("hidden");
+            projectAnchor.setAttribute("href", this.contentUrl);
+            if (this.isDownload) 
+            {
+                let url = projectAnchor.getAttribute("href");
+                let urlSections = url.split("/");
+                let filename = urlSections[urlSections.length - 1];
+
+                console.log(filename);
+
+                projectAnchor.setAttribute("download", filename);
+                projectAnchor.textContent = this.isPlatSpecific? "Download (Windows Binary)" : "Download";
+            }
+            else 
+            {
+                // likely a link to the repo (which should have associated  releases)
+                projectAnchor.textContent = "Project Repo / Source";
+            }
+        }
+        else 
+        {
+            projectAnchor.classList.add("hidden");
+            projectAnchor.removeAttribute("download");
+        }
 
         // check if we have an associated video
         if (this.videoID !== null)
@@ -54,8 +84,15 @@ class Post {
             console.log(this.videoID);
             videoContainer.classList.remove("hidden");
             createYoutubePlayer(this.videoID);
-        }
+        }        
     }
+}
+
+class PostSettings
+{
+    contentUrl;
+    isDownload;
+
 }
 
 class ImageGallery {
@@ -125,16 +162,19 @@ function createPosts()
 
     posts.genericRPG = new Post("A Generic Fantasy RPG", 
         "images/post-thumbnails/ci536_group_project_battle.png",
-        "NEhe7gk0350");
+        "NEhe7gk0350", "https://github.com/BlueSwan4/CI536-Group-Project", false);
 
     posts.genericRPG.textContent = GENERICRPG;
 
     // caverns here
-    posts.caverns = new Post("The Caverns of Phobos", "images/post-thumbnails/caverns_of_phobos.png");
+    posts.caverns = new Post("The Caverns of Phobos", "images/post-thumbnails/caverns_of_phobos.png",
+         "qycteU3x730", "downloads/caverns_winx64_debug.zip", true, false); // vid id is a placeholder until i record the demo
     posts.caverns.textContent = "Caverns placeholder until i write the stuff";
 
     // euclidean dreams
-    posts.edreams = new Post("Euclidean Dreams", "images/post-thumbnails/edreams.png");
+    posts.edreams = new Post("Euclidean Dreams", 
+        "images/post-thumbnails/edreams.png", "k7Ee_-nNlYA", 
+        "https://github.com/thatonedevel/Euclidean-Dreams", false);
 }
 
 function onPostThumbnailClicked(evt)
@@ -187,12 +227,14 @@ function createYoutubePlayer(videoID)
     // make a youtube player for the video with the specified id
     if (vplayer !== null)
         return; // exit if player exists
-    vplayer = document.createElement("iframe");
-    vplayer.src = EMBED_URL + videoID;
-    vplayer.id = "player"
-    vplayer.width = 560;
-    vplayer.height = 315;
-    vplayer.setAttribute("allow", EMBED_SETTINGS);
+    vplayer = Object.assign(document.createElement("iframe"), {
+        src: EMBED_URL + videoID,
+        id: "player",
+        width: 560,
+        height: 315,
+        allow: EMBED_SETTINGS
+    });
+    
     videoContainer.appendChild(vplayer);
 }
 
