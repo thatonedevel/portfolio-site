@@ -1,1 +1,2 @@
 *.zip merge=lfs diff=lfs filter=lfs
+*.pdf merge=lfs diff=lfs filter=lfs
