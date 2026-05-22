@@ -6,6 +6,7 @@ body
     padding: 10px;
     background-color: black;
     color: #33ff00;
+    max-height: 65vh;
 }
 
 footer
@@ -143,15 +144,21 @@ section.post-row
 {
     display: flex;
     flex-direction: row;
+    align-items: start;
 }
 
 article.content
 {
+    padding-left: 30px;
+    padding-right: 30px;
     display: flex;
     flex-direction: column;
     padding-top: 5px;
     height: 600px;
     overflow: scroll;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #33ff00;
 }
 
 article.post
@@ -170,6 +177,11 @@ article.post
 article.hidden 
 {
     /* use this for hiding content */
+    display: none;
+}
+
+a.hidden
+{
     display: none;
 }
 
@@ -204,6 +216,11 @@ h2#post-title
 {
     font-weight: bold;
     color:white;
+}
+
+section#page-description
+{
+    padding-top: 10px;
 }
 
 div#image-header-container
