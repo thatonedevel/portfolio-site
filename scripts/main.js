@@ -4,6 +4,7 @@ let pageContent = null;
 let postContent = null;
 let vplayer = null;
 let videoContainer = null;
+let projectAnchor = null;
 
 let dummyPost = null; // placeholder post for error handling
 
@@ -15,7 +16,8 @@ let posts = { // use this to store post references. it is shared state (so not g
     blackout: null,
     genericRPG: null,
     euclideanDreams: null,
-    caverns: null
+    caverns: null,
+    edreams: null
 }
 
 class Post {
@@ -23,12 +25,16 @@ class Post {
     image;
     textContent;
     videoID;
+    contentUrl;
+    isDownload = false;
 
-    constructor(title, imageUrl, id=null)
+    constructor(title, imageUrl, id=null, contentUrl=null, download=false)
     {
         this.title = title;
         this.image = imageUrl;
         this.videoID = id;
+        this.contentUrl = contentUrl;
+        this.isDownload = download;
     }
 
     setPostContent()
@@ -122,6 +128,13 @@ function createPosts()
         "NEhe7gk0350");
 
     posts.genericRPG.textContent = GENERICRPG;
+
+    // caverns here
+    posts.caverns = new Post("The Caverns of Phobos", "images/post-thumbnails/caverns_of_phobos.png");
+    posts.caverns.textContent = "Caverns placeholder until i write the stuff";
+
+    // euclidean dreams
+    posts.edreams = new Post("Euclidean Dreams", "images/post-thumbnails/edreams.png");
 }
 
 function onPostThumbnailClicked(evt)
@@ -204,6 +217,7 @@ function main()
     //vplayer = document.querySelector("#player");
     videoContainer = document.querySelector("#player-container");
 
+    projectAnchor = document.querySelector(".project-anchor");
     console.log("page loaded");
 }
 
