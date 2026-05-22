@@ -153,6 +153,7 @@ article.content
     padding-right: 30px;
     display: flex;
     flex-direction: column;
+    width: 75%;
     padding-top: 5px;
     height: 600px;
     overflow: scroll;

@@ -1,4 +1,4 @@
-export { DEFENDER, BLACKOUT, GENERICRPG };
+export { DEFENDER, BLACKOUT, GENERICRPG, CAVERNS };
 
 
 // project descriptions
@@ -11,3 +11,10 @@ Due to the nature of Twine, there wasn't really much technical involvment, as th
 
 const GENERICRPG = `A Generic Fantasy RPG was a group computing project, primarily done as an excercise in project management & software delivery in a team.
 As part of this, we had to create a dedicated Kanban board to manage our requirements & track progress on various features of a product (in our case a game). Within our group, the most major feature I worked on was arguably the encounters & combat system, given this made up a major part of the gameplay loop. `;
+
+const CAVERNS = `Caverns of Phobos is a simple auto-scrolling 2D shooter game, written in C++. Unlike some of my other projects, 
+this one was built at a lower level, as the sole library it uses is SDL2 (the Simple Direct media Layer). During the development, this ended up being something of a double-edged sword, as I had a lot more control over the game's architecure, but at the same time, the project demanded more from me to define this, though this was helped a little as we were given a starting codebase to build off of.
+Given C++'s nature as a default unmanaged language, I did also have to take more care with this - whilst C++ does have smart pointers to make this much easier, at the time of development, I was very new to the language, and so only familiar with raw pointers, which is definitely something to consider for future SDL projects. Some other tweaks I would also make would be in relation to level loading - the game's levels are actually hard-coded into 2D arrays (as these naturally resemble a grid structure).#
+Whilst this is serviceable for a smaller project like this, it does mean it is harder to add new stages, though I do see a means to do this - when the levels were created, they were initially in .csv files, which was then pasted into an array - the change I would make within the implementation would be that the levels are loaded from external files, which could also help speed up iteration as changes to levels wouldn't recquire the project to be recompiled.
+
+With that said, there were also multiple aspects of this project that I was ultimately pretty happy with, such as the asteroids that divide themselves into smaller chunks when hit and the shot charging system. If you wish to try the game yourself, I've included a debug build for Windows machines.`;

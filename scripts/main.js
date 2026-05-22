@@ -1,4 +1,4 @@
-import { BLACKOUT, DEFENDER, GENERICRPG } from "./descriptions.js";
+import { BLACKOUT, DEFENDER, GENERICRPG, CAVERNS } from "./descriptions.js";
 
 let pageContent = null;
 let postContent = null;
@@ -169,7 +169,7 @@ function createPosts()
     // caverns here
     posts.caverns = new Post("The Caverns of Phobos", "images/post-thumbnails/caverns_of_phobos.png",
          "qycteU3x730", "downloads/caverns_winx64_debug.zip", true, false); // vid id is a placeholder until i record the demo
-    posts.caverns.textContent = "Caverns placeholder until i write the stuff";
+    posts.caverns.textContent = CAVERNS;
 
     // euclidean dreams
     posts.edreams = new Post("Euclidean Dreams", 
