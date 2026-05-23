@@ -21,17 +21,32 @@ export function parseString(parentElement, textContent)
         }
     }
 
-    if (paragraphEndIndices.length === 0) paragraphEndIndices.push(lines.length - 1); // add this so there is at least one para
+    paragraphEndIndices.push(lines.length - 1); // do this to force para inclusion
+
+    console.log(paragraphEndIndices);
 
     for (let j = 0; j < paragraphEndIndices.length; j++)
     {
+        console.log("paragraphs: ", paragraphEndIndices.length);
         // create a paragraph tag for each one in the array
         let newPar = Object.assign(document.createElement("p"), {
             class: ".parsed-paragraph"
         });
-        // make a slice from the start index to the given end index
-        let slice = lines.slice(lineIndex, paragraphEndIndices[j]);
-        newPar.textContent = slice.join();
+
+        if (lineIndex !== paragraphEndIndices[j])
+        {
+            // make a slice from the start index to the given end index
+            let slice = lines.slice(lineIndex, paragraphEndIndices[j]);
+            console.log("Slice: ", slice);
+            newPar.textContent = slice.join();
+        }
+        else 
+        {
+            // one "line"
+            console.log("text is one paragraph");
+            newPar.textContent = lines[lineIndex];
+        }
+
         paragraphs.push(newPar);
 
         // set lineindex to the next start location
