@@ -1,4 +1,5 @@
 import { BLACKOUT, DEFENDER, GENERICRPG, CAVERNS, VR } from "./descriptions.js";
+import { parseString, removeText } from "./parser.js";
 
 let pageContent = null;
 let postContent = null;
@@ -49,7 +50,7 @@ class Post {
 
         postTitle.textContent = this.title;
         img.setAttribute("src", this.image);
-        body.textContent = this.textContent;
+        parseString(body, this.textContent);
         
         // attach the project link if we have a url
         if (this.contentUrl !== null)
@@ -87,13 +88,6 @@ class Post {
             createYoutubePlayer(this.videoID);
         }        
     }
-}
-
-class PostSettings
-{
-    contentUrl;
-    isDownload;
-
 }
 
 class ImageGallery {
@@ -218,6 +212,7 @@ function closePost()
     postContent.classList.add("hidden");
     pageContent.classList.remove("hidden");
     videoContainer.classList.add("hidden");
+    removeText(document.querySelector("#body-text"));
     deletePlayer();
 }
 
