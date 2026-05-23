@@ -9,6 +9,8 @@ export function parseString(parentElement, textContent)
     let paragraphEndIndices = [];
     let paragraphs = [];
 
+    parentElement.textContent = ""; // clear the placeholder text
+
     // go through the lines array
     for (let i = 0; i < lines.length; i++)
     {
@@ -53,5 +55,4 @@ export function removeText(parentElement)
     }
 
     parentElement.textContent = ""; // set to empty string to clear completely
-    linebreaks.splice(0); // clear array here
 }
