@@ -21,9 +21,11 @@ With that said, there were also multiple aspects of this project that I was ulti
 
 const VR = `Another group software project I worked on was a VR simulation of the Brighton Dome, specifically in the Corn Exchange area of the building, and the demo here was made by one of our group's artists / programmers.
 As part of this, our team had to simulate the movement of people through the space, ideally from a set of user groups for a given event. Our group chose the assumed user groups for the family day event that the Dome had ran fairly recently,
-being parents, parents with children (potentially with puschairs), and users with mobility aids (e.g wheelchair users.). 
+being parents, parents with children (potentially with puschairs), and users with mobility aids (e.g wheelchair users.).
 
-For this project we allocated the workflow based on the members of our team - we had three members who acted as programmers, and a three who created the block-out of the space (to clarify, we were a team of 5, one of our artists did also aid in the programming). As one of the team's programmer's, I had to program the AI for the NPCs. 
+For this project we allocated the workflow based on the members of our team - we had three members who acted as programmers, and a three who created the block-out of the space (to clarify, we were a team of 5, one of our artists did also aid in the programming). As one of the team's programmer's, I had to program the AI for the NPCs.
 This also had a couple of dependencies such as an in-game clock system (not operating on real time). This was so that when assigning locations for the NPC agents, they could go to these locations on a given schedule. Aside from this, the main other dependency needed was the "Activity Stand", which were objects in the game world that represented the different stalls that were available during the activity day. The activity stand also aded some logic to allow agents to form a queue for a given time before moving to another location after being at the stand.
 However, the bulk of my contribution was in the core of the agent behaviour, which was designed via a behaviour tree that was converted into different parts of a C# script that I attached to the agent.
-Getting the behaviour of the basic agent ultimately became a lot more effort than expected, since there were a myriad of issues that I specifically ran into when developing the NPC agents, which led to minimal available time to expand on them to cover our desired user groups.`;
+Getting the behaviour of the basic agent ultimately became a lot more effort than expected, since there were a myriad of issues that I specifically ran into when developing the NPC agents, which led to minimal available time to expand on them to cover our desired user groups.
+
+The link below will take you to the project's repository, which also has a Windows build compatible with the Meta Quest 2 Headset`;

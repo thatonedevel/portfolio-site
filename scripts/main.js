@@ -1,4 +1,4 @@
-import { BLACKOUT, DEFENDER, GENERICRPG, CAVERNS } from "./descriptions.js";
+import { BLACKOUT, DEFENDER, GENERICRPG, CAVERNS, VR } from "./descriptions.js";
 
 let pageContent = null;
 let postContent = null;
@@ -17,7 +17,8 @@ let posts = { // use this to store post references. it is shared state (so not g
     genericRPG: null,
     euclideanDreams: null,
     caverns: null,
-    edreams: null
+    edreams: null,
+    vr: null
 }
 
 class Post {
@@ -175,6 +176,13 @@ function createPosts()
     posts.edreams = new Post("Euclidean Dreams", 
         "images/post-thumbnails/edreams.png", "k7Ee_-nNlYA", 
         "https://github.com/thatonedevel/Euclidean-Dreams", false);
+    
+    posts.vr = new Post("Brighton Dome VR Simulation", 
+        "images/post-thumbnails/brighton_vr.png", "0gL6wZMQowA",
+        "https://github.com/thatonedevel/CI606_VR_Systems", false
+    );
+
+    posts.vr.textContent = VR;
 }
 
 function onPostThumbnailClicked(evt)
