@@ -3,14 +3,19 @@ export { DEFENDER, BLACKOUT, GENERICRPG, CAVERNS, VR };
 
 // project descriptions
 const DEFENDER = `Moonbase Defender is a browser based game made using JS and the Phaser Engine. 
-It's a simple tower-defense game that runs in the browser, primarily influenced by the Bloons and PvZ series. As the player, you have to defend your base from waves of enemies by placing different objects around your base, each of which has an associated cost - to generatew these you need to make sure to place 
-`
+It's a simple tower-defense game that runs in the browser, primarily influenced by the Bloons and PvZ series. As the player, you have to defend your base from waves of enemies by placing different objects around your base, each of which has an associated cost - to generate these you need to make sure to place solar panels at spots in the base.
+Each of the turrets can be destroyed after being attacked by an enemy enough, so as part of the gameplay, you'll need to reinforce your defences with shield generators. How effectively you fill in the base will affect your chances of surviving the invasion.
+
+During the development of this project, I had to make heavy use of JS's OOP options, including the protection modifiers, so for this to be playable, your browser needs to support ECMAScript 6. Also, something that I ended up fairly happy with from this project was the custom GUI system - at the time, I wasn't properly aware of beiong able to overlay html elements on the Phaser game canvas, 
+so I ended up creating several custom GUi widgets for buttons and labels to display to the user. These can be found in the gui.js file under the game's scripts. Like with another project, the game board was blocked out and exported as a CSV, which was then brought into a list (see levels.js). One other somewhat significant aspect other than the levels and buildables was the behaviour of the enemies - this was modelled using a faily swimple decision tree, which was used to determine how the enemy ships would target the parts of the base.
+
+The project is embedded here just below, as well as a link to the source code.`;
+
 const BLACKOUT = `Blackout is an interactive choose-your-adventure story I made as part of a team of 4. This was built using a tool called Twine, and can be played in the browser.
 We made this game to study & apply narrative structures, such as the Hero's Journey, within a game context, whilst still providing some choice to the player. As part of this, each of us took up a different narrative branch to design - I primarily worked on the power plant section and office break-in section.
 Due to the nature of Twine, there wasn't really much technical involvment, as this was done moreso to study narrative design - at most it was some macros to define variables so we could determine which ending the player should end up at.`;
 
-const GENERICRPG = `A Generic Fantasy RPG was a group computing project, primarily done as an excercise in project management & software delivery in a team.
-As part of this, we had to create a dedicated Kanban board to manage our requirements & track progress on various features of a product (in our case a game). Within our group, the most major feature I worked on was arguably the encounters & combat system, given this made up a major part of the gameplay loop. `;
+const GENERICRPG = `A Generic Fantasy RPG was a group computing project, primarily done as an excercise in project management & software delivery in a team. As part of this, we had to create a dedicated Kanban board to manage our requirements & track progress on various features of a product (in our case a game). Within our group, the most major feature I worked on was arguably the encounters & combat system, given this made up a major part of the gameplay loop. `;
 
 const CAVERNS = `Caverns of Phobos is a simple auto-scrolling 2D shooter game, written in C++. Unlike some of my other projects, 
 this one was built at a lower level, as the sole library it uses is SDL2 (the Simple Direct media Layer). During the development, this ended up being something of a double-edged sword, as I had a lot more control over the game's architecure, but at the same time, the project demanded more from me to define this, though this was helped a little as we were given a starting codebase to build off of.
