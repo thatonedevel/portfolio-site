@@ -168,7 +168,7 @@ function createPosts()
 
     // caverns here
     posts.caverns = new Post("The Caverns of Phobos", "images/post-thumbnails/caverns_of_phobos.png",
-         "qycteU3x730", "downloads/caverns_winx64_debug.zip", true, false); // vid id is a placeholder until i record the demo
+         "m8ZRoJi4rpU", "downloads/caverns_winx64_debug.zip", true, false);
     posts.caverns.textContent = CAVERNS;
 
     // euclidean dreams
