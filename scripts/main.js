@@ -1,9 +1,11 @@
-import { BLACKOUT, DEFENDER, GENERICRPG } from "./descriptions.js";
+import { BLACKOUT, DEFENDER, GENERICRPG, CAVERNS, VR } from "./descriptions.js";
+import { parseString, removeText } from "./parser.js";
 
 let pageContent = null;
 let postContent = null;
 let vplayer = null;
 let videoContainer = null;
+let projectAnchor = null;
 
 let dummyPost = null; // placeholder post for error handling
 
@@ -15,7 +17,9 @@ let posts = { // use this to store post references. it is shared state (so not g
     blackout: null,
     genericRPG: null,
     euclideanDreams: null,
-    caverns: null
+    caverns: null,
+    edreams: null,
+    vr: null
 }
 
 class Post {
@@ -23,12 +27,18 @@ class Post {
     image;
     textContent;
     videoID;
+    contentUrl;
+    isDownload = false;
+    isPlatSpecific = true
 
-    constructor(title, imageUrl, id=null)
+    constructor(title, imageUrl, id=null, contentUrl=null, download=false, agnostic=false)
     {
         this.title = title;
         this.image = imageUrl;
         this.videoID = id;
+        this.contentUrl = contentUrl;
+        this.isDownload = download;
+        this.isPlatSpecific = !agnostic;
     }
 
     setPostContent()
@@ -40,7 +50,35 @@ class Post {
 
         postTitle.textContent = this.title;
         img.setAttribute("src", this.image);
-        body.textContent = this.textContent;
+        parseString(body, this.textContent);
+        
+        // attach the project link if we have a url
+        if (this.contentUrl !== null)
+        {
+            projectAnchor.classList.remove("hidden");
+            projectAnchor.setAttribute("href", this.contentUrl);
+            if (this.isDownload) 
+            {
+                let url = projectAnchor.getAttribute("href");
+                let urlSections = url.split("/");
+                let filename = urlSections[urlSections.length - 1];
+
+                console.log(filename);
+
+                projectAnchor.setAttribute("download", filename);
+                projectAnchor.textContent = this.isPlatSpecific? "Download (Windows Binary)" : "Download";
+            }
+            else 
+            {
+                // likely a link to the repo (which should have associated  releases)
+                projectAnchor.textContent = "Project Repo / Source";
+            }
+        }
+        else 
+        {
+            projectAnchor.classList.add("hidden");
+            projectAnchor.removeAttribute("download");
+        }
 
         // check if we have an associated video
         if (this.videoID !== null)
@@ -48,7 +86,7 @@ class Post {
             console.log(this.videoID);
             videoContainer.classList.remove("hidden");
             createYoutubePlayer(this.videoID);
-        }
+        }        
     }
 }
 
@@ -110,7 +148,7 @@ function createPosts()
 
     posts.moonbaseDefender = new Post("Moonbase Defender", 
         "images/post-thumbnails/moonbase_defender_thumbnail.png",
-    "t0ecie6R_PM");
+    "t0ecie6R_PM", "https://github.com/thatonedevel/MoonbaseDefender");
 
     posts.moonbaseDefender.textContent = DEFENDER;
 
@@ -119,9 +157,26 @@ function createPosts()
 
     posts.genericRPG = new Post("A Generic Fantasy RPG", 
         "images/post-thumbnails/ci536_group_project_battle.png",
-        "NEhe7gk0350");
+        "NEhe7gk0350", "https://github.com/BlueSwan4/CI536-Group-Project", false);
 
     posts.genericRPG.textContent = GENERICRPG;
+
+    // caverns here
+    posts.caverns = new Post("The Caverns of Phobos", "images/post-thumbnails/caverns_of_phobos.png",
+         "m8ZRoJi4rpU", "downloads/caverns_winx64_debug.zip", true, false);
+    posts.caverns.textContent = CAVERNS;
+
+    // euclidean dreams
+    posts.edreams = new Post("Euclidean Dreams", 
+        "images/post-thumbnails/edreams.png", "k7Ee_-nNlYA", 
+        "https://github.com/thatonedevel/Euclidean-Dreams", false);
+    
+    posts.vr = new Post("Brighton Dome VR Simulation", 
+        "images/post-thumbnails/brighton_vr.png", "0gL6wZMQowA",
+        "https://github.com/thatonedevel/CI606_VR_Systems", false
+    );
+
+    posts.vr.textContent = VR;
 }
 
 function onPostThumbnailClicked(evt)
@@ -157,6 +212,7 @@ function closePost()
     postContent.classList.add("hidden");
     pageContent.classList.remove("hidden");
     videoContainer.classList.add("hidden");
+    removeText(document.querySelector("#body-text"));
     deletePlayer();
 }
 
@@ -174,12 +230,14 @@ function createYoutubePlayer(videoID)
     // make a youtube player for the video with the specified id
     if (vplayer !== null)
         return; // exit if player exists
-    vplayer = document.createElement("iframe");
-    vplayer.src = EMBED_URL + videoID;
-    vplayer.id = "player"
-    vplayer.width = 560;
-    vplayer.height = 315;
-    vplayer.setAttribute("allow", EMBED_SETTINGS);
+    vplayer = Object.assign(document.createElement("iframe"), {
+        src: EMBED_URL + videoID,
+        id: "player",
+        width: 560,
+        height: 315,
+        allow: EMBED_SETTINGS
+    });
+    
     videoContainer.appendChild(vplayer);
 }
 
@@ -204,6 +262,7 @@ function main()
     //vplayer = document.querySelector("#player");
     videoContainer = document.querySelector("#player-container");
 
+    projectAnchor = document.querySelector(".project-anchor");
     console.log("page loaded");
 }
 

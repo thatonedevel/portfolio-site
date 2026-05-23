@@ -6,6 +6,7 @@ body
     padding: 10px;
     background-color: black;
     color: #33ff00;
+    max-height: 65vh;
 }
 
 footer
@@ -67,6 +68,7 @@ ul li
 ul li a
 {
     text-decoration: none;
+    color: #33ff00;
 }
 
 ul li a:visited
@@ -80,6 +82,12 @@ ul li:hover
     color: white;
 }
 
+ul li.active
+{
+    /* nav rule for the current page */
+    background-color: #20a200;
+    color: white;
+}
 
 header
 {
@@ -136,15 +144,22 @@ section.post-row
 {
     display: flex;
     flex-direction: row;
+    align-items: start;
 }
 
 article.content
 {
+    padding-left: 30px;
+    padding-right: 30px;
     display: flex;
     flex-direction: column;
+    width: 75%;
     padding-top: 5px;
     height: 600px;
     overflow: scroll;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #33ff00;
 }
 
 article.post
@@ -164,6 +179,29 @@ article.hidden
 {
     /* use this for hiding content */
     display: none;
+}
+
+a.hidden
+{
+    display: none;
+}
+
+a.project-anchor
+{
+    color:white;
+    background-color: #22ac00;
+    text-decoration: none;
+    padding: 5px;
+}
+
+a.project-anchor:hover
+{
+    background-color: #20a200;
+}
+
+a.project-anchor:visited
+{
+    color: white;
 }
 
 section.hidden {
@@ -197,6 +235,11 @@ h2#post-title
 {
     font-weight: bold;
     color:white;
+}
+
+section#page-description
+{
+    padding-top: 10px;
 }
 
 div#image-header-container
