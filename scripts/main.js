@@ -46,7 +46,7 @@ class Post {
 
     setGallerySources(...sources)
     {
-        
+        this.galleryImages = sources;
     }
 
     setPostContent()
@@ -121,6 +121,8 @@ function createPosts()
         "NEhe7gk0350", "https://github.com/BlueSwan4/CI536-Group-Project", false);
 
     posts.genericRPG.textContent = GENERICRPG;
+    posts.genericRPG.setGallerySources("images/genericrpg/title.png", "images/genericrpg/overworld.png", 
+        "images/genericrpg/goblins.png", "images/genericrpg/npc.png", "images/genericrpg/giant_spider.png");
 
     // caverns here
     posts.caverns = new Post("The Caverns of Phobos", "images/post-thumbnails/caverns_of_phobos.png",
@@ -174,7 +176,7 @@ function onPostThumbnailClicked(evt)
     // check if we have images
     if (currentPost.galleryImages.length > 0)
     {
-        updateGallerySources(...currentPost.images);
+        updateGallerySources(currentPost.images);
         gallery.show();
         console.log("showing");
     }
@@ -230,7 +232,7 @@ function makeGallery()
 function updateGallerySources(...newSources)
 {
     gallery.clear();
-    gallery.setGallerySources(...newSources);
+    gallery.setSources(...newSources);
 }
 
 function main()
