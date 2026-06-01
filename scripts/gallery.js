@@ -13,7 +13,7 @@ export class ImageGallery {
         // creates the image gallery and sources
 
         sources.forEach(element => {
-            this.images.push(element);
+            this.#images.push(element);
         });
 
         // create the tag structure for the gallery
