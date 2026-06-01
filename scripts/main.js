@@ -1,11 +1,13 @@
 import { BLACKOUT, DEFENDER, GENERICRPG, CAVERNS, VR } from "./descriptions.js";
 import { parseString, removeText } from "./parser.js";
+import { ImageGallery } from "./gallery.js";
 
 let pageContent = null;
 let postContent = null;
 let vplayer = null;
 let videoContainer = null;
 let projectAnchor = null;
+let gallery = null;
 
 let dummyPost = null; // placeholder post for error handling
 
@@ -29,7 +31,8 @@ class Post {
     videoID;
     contentUrl;
     isDownload = false;
-    isPlatSpecific = true
+    isPlatSpecific = true;
+    galleryImages = [];
 
     constructor(title, imageUrl, id=null, contentUrl=null, download=false, agnostic=false)
     {
@@ -39,6 +42,11 @@ class Post {
         this.contentUrl = contentUrl;
         this.isDownload = download;
         this.isPlatSpecific = !agnostic;
+    }
+
+    setGallerySources(...sources)
+    {
+        
     }
 
     setPostContent()
@@ -137,6 +145,7 @@ function onPostThumbnailClicked(evt)
     // open the post - hide the pageContent article and show postContent
     pageContent.classList.add("hidden");
     postContent.classList.remove("hidden");
+    let currentPost = null;
 
     // lookup the post from the posts object
     console.log(evt.currentTarget.id);
@@ -148,15 +157,24 @@ function onPostThumbnailClicked(evt)
         {
             // post exists
             posts[evt.currentTarget.id].setPostContent();
+            currentPost = posts[evt.currentTarget.id];
         }
         else
         {
             dummyPost.setPostContent();
+            currentPost = dummyPost;
         }
     }
     else 
     {
         dummyPost.setPostContent();
+        currentPost = dummyPost;
+    }
+
+    // check if we have images
+    if (currentPost.images.length > 0)
+    {
+        updateGallerySources(...currentPost.images);
     }
 }
 
@@ -194,6 +212,19 @@ function createYoutubePlayer(videoID)
     videoContainer.appendChild(vplayer);
 }
 
+function makeGallery()
+{
+    // add the gallery to the page
+    let root = document.querySelector("#gallery");
+    gallery = new ImageGallery(root, "images/placeholder.png");
+}
+
+function updateGallerySources(...newSources)
+{
+    gallery.clear();
+    gallery.setGallerySources(...newSources);
+}
+
 function main()
 {
     // initialise references
@@ -216,8 +247,8 @@ function main()
     videoContainer = document.querySelector("#player-container");
 
     projectAnchor = document.querySelector(".project-anchor");
+    makeGallery();
     console.log("page loaded");
 }
-
 
 window.addEventListener("load", main);
