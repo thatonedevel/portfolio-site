@@ -17,22 +17,19 @@ export class ImageGallery {
         });
 
         // create the tag structure for the gallery
-        this.#galleryContainer = Object.assign(document.createElement("div"), {
-            class: "gallery-container"
-        });
+        this.#galleryContainer = document.createElement("div");
+        this.#galleryContainer.classList.add("gallery-container");
 
-        this.#prevButton = Object.assign(document.createElement("button"), {
-            class: "gallery-button"
-        });
+        this.#prevButton = document.createElement("button");
+        this.#prevButton.classList.add("gallery-button");
 
-        this.#nextButton = Object.assign(document.createElement("button"), {
-            class: "gallery-button"
-        });
+        this.#nextButton = document.createElement("button");
+        this.#nextButton.classList.add("gallery-button");
 
         this.#display = Object.assign(document.createElement("img"), {
-            class: "gallery-image",
             src: this.#images[0]
         });
+        this.#display.classList.add("gallery-image");
 
         // assign button callbacks
         this.#nextButton.addEventListener("click", this.next);
@@ -45,17 +42,16 @@ export class ImageGallery {
 
 
         // add icons to the buttons
-        this.#prevButton.appendChild(
-            Object.assign(document.createElement("i"), {
-                    class: "fa-solid fa-angle-left"
-                })
-        );
+        
+        
+        let icoA = document.createElement("i");
+        icoA.classList.add("fa-solid", "fa-angle-left");
+        this.#prevButton.appendChild(icoA);
 
-        this.#nextButton.appendChild(
-            Object.assign(document.createElement("i"), {
-                class: "fa-solid fa-angle-right"
-            })
-        );
+
+        let icoB = document.createElement("i");
+        icoB.classList.add("fa-solid", "fa-angle-right");
+        this.#nextButton.appendChild(icoB);
 
         // add gallery to the page
         parent.appendChild(this.#galleryContainer);
@@ -95,5 +91,15 @@ export class ImageGallery {
     {
         this.index = this.index == 0? this.#images.length : this.index - 1;
         this.#display.setAttribute("src", this.#images[index]);
+    }
+
+    hide()
+    {
+        this.#galleryContainer.classList.add("hidden");
+    }
+
+    show()
+    {
+        this.#galleryContainer.classList.remove("hidden");
     }
 }

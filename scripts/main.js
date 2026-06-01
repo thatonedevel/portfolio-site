@@ -172,9 +172,17 @@ function onPostThumbnailClicked(evt)
     }
 
     // check if we have images
-    if (currentPost.images.length > 0)
+    if (currentPost.galleryImages.length > 0)
     {
         updateGallerySources(...currentPost.images);
+        gallery.show();
+        console.log("showing");
+    }
+    else
+    {
+        // hide the gallery
+        gallery.hide();
+        console.log("hiding");
     }
 }
 
