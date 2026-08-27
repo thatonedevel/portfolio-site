@@ -15,7 +15,12 @@ const BLACKOUT = `Blackout is an interactive choose-your-adventure story I made 
 We made this game to study & apply narrative structures, such as the Hero's Journey, within a game context, whilst still providing some choice to the player. As part of this, each of us took up a different narrative branch to design - I primarily worked on the power plant section and office break-in section.
 Due to the nature of Twine, there wasn't really much technical involvment, as this was done moreso to study narrative design - at most it was some macros to define variables so we could determine which ending the player should end up at.`;
 
-const GENERICRPG = `A Generic Fantasy RPG was a group computing project, primarily done as an excercise in project management & software delivery in a team. As part of this, we had to create a dedicated Kanban board to manage our requirements & track progress on various features of a product (in our case a game). Within our group, the most major feature I worked on was arguably the encounters & combat system, given this made up a major part of the gameplay loop. `;
+const GENERICRPG = `A Generic Fantasy RPG was a group computing project, primarily done as an excercise in project management & 
+software delivery in a team. As part of this, we had to create a dedicated Kanban board to manage our requirements & 
+track progress on various features of a product (in our case a game). Within our group, the most major feature I worked on was arguably the encounters & combat system, given this made up a major part of the gameplay loop.
+
+One of the major things I learned as a part of this project was actually a language feature of C# - the event system. Once one of our team had created the skeleton of the GameManager, I noticed the use of "event", which led me to learn about the feature, which ended up being key to having a functional battle system. Because of C#'s built-in support for events,
+I was able to write the battle manager to listen for events such as a unit taking damage, or being killed, and update the internal state that way, without needing a check during the Update call to see if any units had been damaged or killed.`;
 
 const CAVERNS = `Caverns of Phobos is a simple auto-scrolling 2D shooter game, written in C++. Unlike some of my other projects, 
 this one was built at a lower level, as the sole library it uses is SDL2 (the Simple Direct media Layer). During the development, this ended up being something of a double-edged sword, as I had a lot more control over the game's architecure, but at the same time, the project demanded more from me to define this, though this was helped a little as we were given a starting codebase to build off of.
