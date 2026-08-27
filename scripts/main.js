@@ -105,42 +105,47 @@ function createPosts()
     // we could use a http request on a gh pages site
 
     dummyPost = new Post("Post Not Found", "images/placeholder.png");
-    dummyPost.textContent = "Sorry, I couldn't find that post";
 
     posts.moonbaseDefender = new Post("Moonbase Defender", 
         "images/post-thumbnails/moonbase_defender_thumbnail.png",
     "t0ecie6R_PM", "https://github.com/thatonedevel/MoonbaseDefender");
 
-    posts.moonbaseDefender.textContent = DEFENDER;
-
     posts.blackout = new Post("Blackout", "images/post-thumbnails/blackout_thumbnail.png");
-    posts.blackout.textContent = BLACKOUT;
-
+    
     posts.genericRPG = new Post("A Generic Fantasy RPG", 
         "images/post-thumbnails/ci536_group_project_battle.png",
         "NEhe7gk0350", "https://github.com/BlueSwan4/CI536-Group-Project", false);
 
-    posts.genericRPG.textContent = GENERICRPG;
+    
     posts.genericRPG.setGallerySources("images/genericrpg/title.png", "images/genericrpg/overworld.png", 
         "images/genericrpg/goblins.png", "images/genericrpg/npc.png", "images/genericrpg/giant_spider.png");
 
     // caverns here
     posts.caverns = new Post("The Caverns of Phobos", "images/post-thumbnails/caverns_of_phobos.png",
          "m8ZRoJi4rpU", "downloads/caverns_winx64_debug.zip", true, false);
-    posts.caverns.textContent = CAVERNS;
 
     // euclidean dreams
     posts.edreams = new Post("Euclidean Dreams", 
         "images/post-thumbnails/edreams.png", "k7Ee_-nNlYA", 
         "https://github.com/thatonedevel/Euclidean-Dreams");
-    posts.edreams.textContent = EDREAMS;
     
     posts.vr = new Post("Brighton Dome VR Simulation", 
         "images/post-thumbnails/brighton_vr.png", "0gL6wZMQowA",
         "https://github.com/thatonedevel/CI606_VR_Systems", false
     );
 
+    
+}
+
+function setPostText()
+{
+    dummyPost.textContent = "Sorry, I couldn't find that post";
     posts.vr.textContent = VR;
+    posts.edreams.textContent = EDREAMS;
+    posts.caverns.textContent = CAVERNS;
+    posts.genericRPG.textContent = GENERICRPG;
+    posts.blackout.textContent = BLACKOUT;
+    posts.moonbaseDefender.textContent = DEFENDER;
 }
 
 function onPostThumbnailClicked(evt)
@@ -253,6 +258,7 @@ function main()
 
     // create all the posts
     createPosts();
+    setPostText();
 
     //vplayer = document.querySelector("#player");
     videoContainer = document.querySelector("#player-container");
