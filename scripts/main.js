@@ -7,7 +7,7 @@ let postContent = null;
 let vplayer = null;
 let videoContainer = null;
 let projectAnchor = null;
-let gallery = null;
+let imageGallery = null;
 
 let dummyPost = null; // placeholder post for error handling
 
@@ -178,13 +178,13 @@ function onPostThumbnailClicked(evt)
     if (currentPost.galleryImages.length > 0)
     {
         updateGallerySources(currentPost.images);
-        gallery.show();
+        imageGallery.show();
         console.log("showing");
     }
     else
     {
         // hide the gallery
-        gallery.hide();
+        imageGallery.hide();
         console.log("hiding");
     }
 }
@@ -227,13 +227,13 @@ function makeGallery()
 {
     // add the gallery to the page
     let root = document.querySelector("#gallery");
-    gallery = new ImageGallery(root, "images/placeholder.png");
+    imageGallery = new ImageGallery(root, "images/placeholder.png");
 }
 
 function updateGallerySources(...newSources)
 {
-    gallery.clear();
-    gallery.setSources(...newSources);
+    imageGallery.clear();
+    imageGallery.setSources(...newSources);
 }
 
 function main()
@@ -262,4 +262,4 @@ function main()
     console.log("page loaded");
 }
 
-window.addEventListener("load", main);
+document.addEventListener("DOMContentLoaded", main);

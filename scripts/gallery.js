@@ -1,6 +1,6 @@
 export class ImageGallery {
-    #images = [];
-    #index = 0;
+    images = [];
+    index = 0;
 
     // element references
     #galleryContainer;
@@ -13,11 +13,14 @@ export class ImageGallery {
         // creates the image gallery and sources
 
         sources.forEach(element => {
-            this.#images.push(element);
+            this.images.push(element);
         });
 
         // create the tag structure for the gallery
         this.#galleryContainer = document.createElement("div");
+
+        console.log(this.#galleryContainer);
+
         this.#galleryContainer.classList.add("gallery-container");
 
         this.#prevButton = document.createElement("button");
@@ -27,7 +30,7 @@ export class ImageGallery {
         this.#nextButton.classList.add("gallery-button");
 
         this.#display = Object.assign(document.createElement("img"), {
-            src: this.#images[0]
+            src: this.images[0]
         });
         this.#display.classList.add("gallery-image");
 
@@ -59,38 +62,40 @@ export class ImageGallery {
 
     addImage(source)
     {
-        this.#images.push(source);
+        this.images.push(source);
     }
 
     removeImage(index)
     {
-        this.#images.splice(index, 1);
+        this.images.splice(index, 1);
     }
 
     clear()
     {
-        if (this.#images.length !== 0)
-            this.#images.splice(0);
+        if (this.images.length !== 0)
+            this.images.splice(0);
     }
 
     setSources(...newSources)
     {
         this.clear();
         newSources.forEach((source) => {
-            this.#images.push(source);
+            this.images.push(source);
         });
     }
 
     next()
     {
-        this.index = this.index == this.#images.length - 1? 0: this.index + 1;
-        this.#display.setAttribute("src", this.#images[index]);
+        console.log("Gallery size: ", this.images.length);
+        this.index = this.index == this.images.length - 1? 0: this.index + 1;
+        this.#display.setAttribute("src", this.images[this.index]);
     }
 
     previous()
     {
-        this.index = this.index == 0? this.#images.length : this.index - 1;
-        this.#display.setAttribute("src", this.#images[index]);
+        console.log("Gallery size: ", this.images.length);
+        this.index = this.index == 0? this.images.length : this.index - 1;
+        this.display.setAttribute("src", this.images[this.index]);
     }
 
     hide()
