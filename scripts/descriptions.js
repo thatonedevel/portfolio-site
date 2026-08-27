@@ -1,4 +1,4 @@
-export { DEFENDER, BLACKOUT, GENERICRPG, CAVERNS, VR };
+export { DEFENDER, BLACKOUT, GENERICRPG, CAVERNS, VR, EDREAMS };
 
 
 // project descriptions
@@ -34,3 +34,14 @@ However, the bulk of my contribution was in the core of the agent behaviour, whi
 Getting the behaviour of the basic agent ultimately became a lot more effort than expected, since there were a myriad of issues that I specifically ran into when developing the NPC agents, which led to minimal available time to expand on them to cover our desired user groups.
 
 The link below will take you to the project's repository, which also has a Windows build compatible with the Meta Quest 2 Headset`;
+
+const EDREAMS = `This is Euclidean Dreams, it's a prototype for a puzzle game about switching between 2D and 3D to traverse a level, which I made for my dissertation project. Including the pre-prod stage, this project lasted for the whole of my final academic
+year at the University of Brighton. The idea to make a game about a concept like this came from two main sources: Super Paper Mario (2007), a platformer with such a mechanic (from a single angle), and MC Escher's Waterfall (1961). When playing SPM, I had found it odd that switching between 2D and 3D had always been at a single angle, and I wanted to see how you might implement such a system to work with multiple angles.
+
+The core gameplay loop focuses around taking the player character (represented by the alien), and regularly switching between perspectives to help them reach the level's goal post. 
+Each stage beyond the tutorial also introduced mechanics that interacted with the perspective-switching system, such as platforms that could only be traversed when in 2D, or rails that get connected to each other in 2D.
+
+Whilst this gameplay mechanic was the main focus of the project, I also wanted to use it to learn some of the other parts of Unity's API that can be used in other projects, such as the JSON serialiser for creating save files, and the new input system's 
+mechanisms for changing controller mappings at runtime. This did have some success - I was able to create a game save system with multiple save slots (and operations to create/copy/delete saves), as well as basic control remapping.
+
+If you're curious to see the source code, it's publicly available (see the GitHub link below), which also has a build for Windows.`;

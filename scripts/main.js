@@ -1,4 +1,4 @@
-import { BLACKOUT, DEFENDER, GENERICRPG, CAVERNS, VR } from "./descriptions.js";
+import { BLACKOUT, DEFENDER, GENERICRPG, CAVERNS, VR, EDREAMS } from "./descriptions.js";
 import { parseString, removeText } from "./parser.js";
 import { ImageGallery } from "./gallery.js";
 
@@ -132,7 +132,8 @@ function createPosts()
     // euclidean dreams
     posts.edreams = new Post("Euclidean Dreams", 
         "images/post-thumbnails/edreams.png", "k7Ee_-nNlYA", 
-        "https://github.com/thatonedevel/Euclidean-Dreams", false);
+        "https://github.com/thatonedevel/Euclidean-Dreams");
+    posts.edreams.textContent = EDREAMS;
     
     posts.vr = new Post("Brighton Dome VR Simulation", 
         "images/post-thumbnails/brighton_vr.png", "0gL6wZMQowA",
