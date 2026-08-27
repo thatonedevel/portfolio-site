@@ -1,11 +1,13 @@
-import { BLACKOUT, DEFENDER, GENERICRPG, CAVERNS, VR } from "./descriptions.js";
+import { BLACKOUT, DEFENDER, GENERICRPG, CAVERNS, VR, EDREAMS } from "./descriptions.js";
 import { parseString, removeText } from "./parser.js";
+import { ImageGallery } from "./gallery.js";
 
 let pageContent = null;
 let postContent = null;
 let vplayer = null;
 let videoContainer = null;
 let projectAnchor = null;
+let imageGallery = null;
 
 let dummyPost = null; // placeholder post for error handling
 
@@ -29,7 +31,8 @@ class Post {
     videoID;
     contentUrl;
     isDownload = false;
-    isPlatSpecific = true
+    isPlatSpecific = true;
+    galleryImages = [];
 
     constructor(title, imageUrl, id=null, contentUrl=null, download=false, agnostic=false)
     {
@@ -39,6 +42,11 @@ class Post {
         this.contentUrl = contentUrl;
         this.isDownload = download;
         this.isPlatSpecific = !agnostic;
+    }
+
+    setGallerySources(...sources)
+    {
+        this.galleryImages = sources;
     }
 
     setPostContent()
@@ -90,53 +98,6 @@ class Post {
     }
 }
 
-class ImageGallery {
-    #images = [];
-    #element;
-    #index = 0;
-
-    constructor(...sources)
-    {
-        this.#element = document.createElement("img");
-        sources.forEach(element => {
-            this.images.push(element);
-        });
-    }
-
-    attach(parent)
-    {
-        parent.appendChild(this.#element);
-    }
-
-    addImage(source)
-    {
-        this.#images.push(source);
-    }
-
-    removeImage(index)
-    {
-        this.#images.splice(index, 1);
-    }
-
-    clear()
-    {
-        if (this.#images.length !== 0)
-            this.#images.splice(0);
-    }
-
-    next()
-    {
-        this.index = this.index == this.#images.length - 1? 0: this.index + 1;
-        this.#element.setAttribute("src", this.#images[index]);
-    }
-
-    previous()
-    {
-        this.index = this.index == 0? this.#images.length : this.index - 1;
-        this.#element.setAttribute("src", this.#images[index]);
-    }
-}
-
 function createPosts()
 {
     // make the "posts" in here
@@ -144,39 +105,52 @@ function createPosts()
     // we could use a http request on a gh pages site
 
     dummyPost = new Post("Post Not Found", "images/placeholder.png");
-    dummyPost.textContent = "Sorry, I couldn't find that post";
 
     posts.moonbaseDefender = new Post("Moonbase Defender", 
         "images/post-thumbnails/moonbase_defender_thumbnail.png",
     "t0ecie6R_PM", "https://github.com/thatonedevel/MoonbaseDefender");
 
-    posts.moonbaseDefender.textContent = DEFENDER;
-
     posts.blackout = new Post("Blackout", "images/post-thumbnails/blackout_thumbnail.png");
-    posts.blackout.textContent = BLACKOUT;
-
+    
     posts.genericRPG = new Post("A Generic Fantasy RPG", 
         "images/post-thumbnails/ci536_group_project_battle.png",
         "NEhe7gk0350", "https://github.com/BlueSwan4/CI536-Group-Project", false);
 
-    posts.genericRPG.textContent = GENERICRPG;
+    
+    posts.genericRPG.setGallerySources("images/genericrpg/title.png", "images/genericrpg/overworld.png", 
+        "images/genericrpg/goblins.png", "images/genericrpg/npc.png", "images/genericrpg/giant_spider.png");
 
     // caverns here
     posts.caverns = new Post("The Caverns of Phobos", "images/post-thumbnails/caverns_of_phobos.png",
          "m8ZRoJi4rpU", "downloads/caverns_winx64_debug.zip", true, false);
-    posts.caverns.textContent = CAVERNS;
 
     // euclidean dreams
     posts.edreams = new Post("Euclidean Dreams", 
         "images/post-thumbnails/edreams.png", "k7Ee_-nNlYA", 
-        "https://github.com/thatonedevel/Euclidean-Dreams", false);
+        "https://github.com/thatonedevel/Euclidean-Dreams");
     
     posts.vr = new Post("Brighton Dome VR Simulation", 
         "images/post-thumbnails/brighton_vr.png", "0gL6wZMQowA",
         "https://github.com/thatonedevel/CI606_VR_Systems", false
     );
 
+    
+}
+
+function setPostText()
+{
+    dummyPost.textContent = "Sorry, I couldn't find that post";
     posts.vr.textContent = VR;
+    posts.edreams.textContent = EDREAMS;
+    posts.caverns.textContent = CAVERNS;
+    posts.genericRPG.textContent = GENERICRPG;
+    posts.blackout.textContent = BLACKOUT;
+    posts.moonbaseDefender.textContent = DEFENDER;
+}
+
+function setPostImages()
+{
+    posts.genericRPG.setGallerySources("images/genericrpg/giant_spider.png", "images/genericrpg/goblins.png", "images/genericrpg/npc.png");
 }
 
 function onPostThumbnailClicked(evt)
@@ -184,6 +158,7 @@ function onPostThumbnailClicked(evt)
     // open the post - hide the pageContent article and show postContent
     pageContent.classList.add("hidden");
     postContent.classList.remove("hidden");
+    let currentPost = null;
 
     // lookup the post from the posts object
     console.log(evt.currentTarget.id);
@@ -195,15 +170,32 @@ function onPostThumbnailClicked(evt)
         {
             // post exists
             posts[evt.currentTarget.id].setPostContent();
+            currentPost = posts[evt.currentTarget.id];
         }
         else
         {
             dummyPost.setPostContent();
+            currentPost = dummyPost;
         }
     }
     else 
     {
         dummyPost.setPostContent();
+        currentPost = dummyPost;
+    }
+
+    // check if we have images
+    if (currentPost.galleryImages.length > 0)
+    {
+        //updateGallerySources(currentPost.galleryImages);
+        //imageGallery.show();
+        console.log("showing");
+    }
+    else
+    {
+        // hide the gallery
+        //imageGallery.hide();
+        //console.log("hiding");
     }
 }
 
@@ -241,6 +233,19 @@ function createYoutubePlayer(videoID)
     videoContainer.appendChild(vplayer);
 }
 
+function makeGallery()
+{
+    // add the gallery to the page
+    let root = document.querySelector("#gallery");
+    imageGallery = new ImageGallery(root, "images/placeholder.png");
+}
+
+function updateGallerySources(...newSources)
+{
+    imageGallery.clear();
+    imageGallery.setSources(...newSources);
+}
+
 function main()
 {
     // initialise references
@@ -258,13 +263,15 @@ function main()
 
     // create all the posts
     createPosts();
+    setPostText();
+    //setPostImages();
 
     //vplayer = document.querySelector("#player");
     videoContainer = document.querySelector("#player-container");
 
     projectAnchor = document.querySelector(".project-anchor");
+    //makeGallery();
     console.log("page loaded");
 }
 
-
-window.addEventListener("load", main);
+document.addEventListener("DOMContentLoaded", main);

@@ -1,4 +1,4 @@
-export { DEFENDER, BLACKOUT, GENERICRPG, CAVERNS, VR };
+export { DEFENDER, BLACKOUT, GENERICRPG, CAVERNS, VR, EDREAMS };
 
 
 // project descriptions
@@ -15,7 +15,12 @@ const BLACKOUT = `Blackout is an interactive choose-your-adventure story I made 
 We made this game to study & apply narrative structures, such as the Hero's Journey, within a game context, whilst still providing some choice to the player. As part of this, each of us took up a different narrative branch to design - I primarily worked on the power plant section and office break-in section.
 Due to the nature of Twine, there wasn't really much technical involvment, as this was done moreso to study narrative design - at most it was some macros to define variables so we could determine which ending the player should end up at.`;
 
-const GENERICRPG = `A Generic Fantasy RPG was a group computing project, primarily done as an excercise in project management & software delivery in a team. As part of this, we had to create a dedicated Kanban board to manage our requirements & track progress on various features of a product (in our case a game). Within our group, the most major feature I worked on was arguably the encounters & combat system, given this made up a major part of the gameplay loop. `;
+const GENERICRPG = `A Generic Fantasy RPG was a group computing project, primarily done as an excercise in project management & 
+software delivery in a team. As part of this, we had to create a dedicated Kanban board to manage our requirements & 
+track progress on various features of a product (in our case a game). Within our group, the most major feature I worked on was arguably the encounters & combat system, given this made up a major part of the gameplay loop.
+
+One of the major things I learned as a part of this project was actually a language feature of C# - the event system. Once one of our team had created the skeleton of the GameManager, I noticed the use of "event", which led me to learn about the feature, which ended up being key to having a functional battle system. Because of C#'s built-in support for events,
+I was able to write the battle manager to listen for events such as a unit taking damage, or being killed, and update the internal state that way, without needing a check during the Update call to see if any units had been damaged or killed.`;
 
 const CAVERNS = `Caverns of Phobos is a simple auto-scrolling 2D shooter game, written in C++. Unlike some of my other projects, 
 this one was built at a lower level, as the sole library it uses is SDL2 (the Simple Direct media Layer). During the development, this ended up being something of a double-edged sword, as I had a lot more control over the game's architecure, but at the same time, the project demanded more from me to define this, though this was helped a little as we were given a starting codebase to build off of.
@@ -34,3 +39,14 @@ However, the bulk of my contribution was in the core of the agent behaviour, whi
 Getting the behaviour of the basic agent ultimately became a lot more effort than expected, since there were a myriad of issues that I specifically ran into when developing the NPC agents, which led to minimal available time to expand on them to cover our desired user groups.
 
 The link below will take you to the project's repository, which also has a Windows build compatible with the Meta Quest 2 Headset`;
+
+const EDREAMS = `This is Euclidean Dreams, it's a prototype for a puzzle game about switching between 2D and 3D to traverse a level, which I made for my dissertation project. Including the pre-prod stage, this project lasted for the whole of my final academic
+year at the University of Brighton. The idea to make a game about a concept like this came from two main sources: Super Paper Mario (2007), a platformer with such a mechanic (from a single angle), and MC Escher's Waterfall (1961). When playing SPM, I had found it odd that switching between 2D and 3D had always been at a single angle, and I wanted to see how you might implement such a system to work with multiple angles.
+
+The core gameplay loop focuses around taking the player character (represented by the alien), and regularly switching between perspectives to help them reach the level's goal post. 
+Each stage beyond the tutorial also introduced mechanics that interacted with the perspective-switching system, such as platforms that could only be traversed when in 2D, or rails that get connected to each other in 2D.
+
+Whilst this gameplay mechanic was the main focus of the project, I also wanted to use it to learn some of the other parts of Unity's API that can be used in other projects, such as the JSON serialiser for creating save files, and the new input system's 
+mechanisms for changing controller mappings at runtime. This did have some success - I was able to create a game save system with multiple save slots (and operations to create/copy/delete saves), as well as basic control remapping.
+
+If you're curious to see the source code, it's publicly available (see the GitHub link below), which also has a build for Windows.`;

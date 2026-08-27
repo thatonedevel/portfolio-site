@@ -247,3 +247,8 @@ div#image-header-container
     overflow: hidden;
     height: 500px;
 }
+
+div.hidden
+{
+    display: none;
+}
