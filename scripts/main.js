@@ -148,6 +148,11 @@ function setPostText()
     posts.moonbaseDefender.textContent = DEFENDER;
 }
 
+function setPostImages()
+{
+    posts.genericRPG.setGallerySources("images/genericrpg/giant_spider.png", "images/genericrpg/goblins.png", "images/genericrpg/npc.png");
+}
+
 function onPostThumbnailClicked(evt)
 {
     // open the post - hide the pageContent article and show postContent
@@ -182,15 +187,15 @@ function onPostThumbnailClicked(evt)
     // check if we have images
     if (currentPost.galleryImages.length > 0)
     {
-        updateGallerySources(currentPost.images);
-        imageGallery.show();
+        //updateGallerySources(currentPost.galleryImages);
+        //imageGallery.show();
         console.log("showing");
     }
     else
     {
         // hide the gallery
-        imageGallery.hide();
-        console.log("hiding");
+        //imageGallery.hide();
+        //console.log("hiding");
     }
 }
 
@@ -259,12 +264,13 @@ function main()
     // create all the posts
     createPosts();
     setPostText();
+    //setPostImages();
 
     //vplayer = document.querySelector("#player");
     videoContainer = document.querySelector("#player-container");
 
     projectAnchor = document.querySelector(".project-anchor");
-    makeGallery();
+    //makeGallery();
     console.log("page loaded");
 }
 
