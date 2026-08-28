@@ -252,3 +252,34 @@ div.hidden
 {
     display: none;
 }
+
+#socmed
+{
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+}
+
+i.fa-2xl
+{
+    padding-bottom: 25px;
+}
+
+.socbox
+{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 10px;
+}
+
+a.social
+{
+    font-size: 18px;
+    color:#33ff00;
+}
+
+a.social:visited
+{
+    color:#20a200;
+}
