@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/style.css"> <!-- main stylesheet-->
+
+        <!-- google api fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+
+        <!-- page scripts (including icons) -->
+        <script src="scripts/main.js" type="module"></script>
+        <script src="https://kit.fontawesome.com/0adc338c32.js"></script>
+
+        <!-- page metadata -->
+        <meta charset="utf-8">
+        <title>Nora Dwelly | Artwork</title>
+    </head>
+    <body>
+        <nav id="navMobile"> <!-- mobile navigation -->
+        </nav>
+        <header>
+            My Portfolio | Artwork
+        </header>
+        <main>
+            <aside id="mainNav"> <!-- standard navigation-->
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="games.html">Games/Software</a></li>
+                    <li class="active">Art</li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="https://github.com/thatonedevel" target="_blank">GitHub <i class="fa-solid fa-up-right-from-square"></i></a></li>
+                </ul>
+            </aside>
+            <article class="content">
+                <section id="page-description">
+                    Whilst I'm a programmer first, I do also make a mix of 2D and 3D artwork, which I primarily use for game assets.<br>
+                    This is where you can find some of my work & explanation of my processes.
+                </section>
+                <section class="post-row">
+                    <!-- put post bits in here -->
+                    <div class="post-thumb" id="genericRPG">
+                        <img src="images/post-thumbnails/ci536_group_project_battle.png" class="thumbnail"/>
+                        <strong>A Generic Fantasy RPG</strong>
+                    </div>
+                </section>
+            </article>
+            <article class="post hidden"> <!-- post content here -->
+                <div id="image-header-container">
+                    <img src="images/placeholder.png" id="header-image">
+                </div>
+                <section class="post-body">
+                    <h2 id="post-title">Title</h2>
+                    <section id="player-container">
+                        <!-- we insert the iframe here -->
+                    </section>
+                    <section id="body-text">Body Text</section>
+                    <!--<section id="gallery">Gallery</section>-->
+                </section>
+                <section class="post-footer">
+                    <a class="project-anchor hidden" target="_blank">Project Link</a> <!-- link to proj / download -->
+                    <button id="close-post">Close</button>
+                </section>
+            </article>
+        </main>
+        <footer><!-- page footer -->
+            &copy; Nora Dwelly, 2026 | <a href="https://github.com/thatonedevel/portfolio-site">Site Source</a>
+        </footer>
+    </body>
+</html>
